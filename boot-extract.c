@@ -73,15 +73,22 @@ int main(int argc, char **argv)
 
 	printf("Boot header\n"
 	       "  flash page size\t%d\n"
-	       "  kernel size\t\t0x%x\n"
-	       "  kernel load addr\t0x%x\n"
-	       "  ramdisk size\t\t0x%x\n"
-	       "  ramdisk load addr\t0x%x\n"
+	       "  kernel size\t\t0x%08x\n"
+	       "  kernel load addr\t0x%08x\n"
+	       "  ramdisk size\t\t0x%08x\n"
+	       "  ramdisk load addr\t0x%08x\n"
+		   "  second size\t\t0x%08x\n"
+		   "  second load addr\t0x%08x\n"
+		   "  tags addr\t\t0x%08x\n"
 	       "  name\t\t%s\n"
-	       "  cmdline\t\t%s\n",
+	       "  cmdline\t\t%s\n"
+		   "  extra cmdline\t%s\n",
 	       hdr.page_size,
 	       hdr.kernel_size, hdr.kernel_addr,
-	       hdr.ramdisk_size, hdr.ramdisk_addr, hdr.name, hdr.cmdline);
+	       hdr.ramdisk_size, hdr.ramdisk_addr, 
+		   hdr.second_size,hdr.second_addr,
+		   hdr.tags_addr,
+		   hdr.name, hdr.cmdline,hdr.extra_cmdline);
 
 	flash_page_size = hdr.page_size;
 	if (hdr.kernel_size > 0) {
